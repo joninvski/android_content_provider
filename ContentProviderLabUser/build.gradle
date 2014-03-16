@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.3"
+
+    testBuildType "debug"
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        // Move the tests to tests/java, tests/res, etc...
+        // instrumentTest.setRoot('tests')
+    }
+
+
+    defaultConfig {
+        versionCode 8
+        versionName "0.0.8-ALPHA"
+        minSdkVersion 14
+        targetSdkVersion 19
+    }
+
+
+    signingConfigs {
+        release
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    // specify signing properties on the command line
+    if (project.hasProperty('storeFile')) {
+        println 'Generating a signed package.'
+            android.signingConfigs.release.storeFile = file(storeFile)
+            android.signingConfigs.release.storePassword = storePassword
+            android.signingConfigs.release.keyAlias = keyAlias
+            android.signingConfigs.release.keyPassword = keyPassword
+    } else {
+        android.buildTypes.release.signingConfig = null
+    }
+}
