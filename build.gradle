@@ -1,0 +1,1 @@
+tasks.getByPath(':ContentProviderLabUser:connectedInstrumentTest').dependsOn(':ContentProviderLabContentProvider:installDebug')

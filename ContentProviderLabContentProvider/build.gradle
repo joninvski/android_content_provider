@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.7.+'
+        classpath 'com.android.tools.build:gradle:0.7.3'
     }
 }
 apply plugin: 'android'
@@ -14,7 +14,7 @@ repositories {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    buildToolsVersion "19.0.0"
 
     defaultConfig {
         minSdkVersion 10
@@ -23,6 +23,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
-    instrumentTestCompile 'com.jayway.android.robotium:robotium-solo:5.0.1'
+    instrumentTestCompile 'com.jayway.android.robotium:robotium-solo:4.3.1'
 }
+                                                                                                    }
